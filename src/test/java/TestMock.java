@@ -1,7 +1,12 @@
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Owner;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import io.restassured.http.Method;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.max.lesson3.home.accuweather.weather.Weather;
 import org.slf4j.Logger;
@@ -20,6 +25,10 @@ public class TestMock extends AccuweatherMockAbstractTest{
     public static final String code400 = "/forecasts/v1/daily/10day/690127";
 
     @Test
+    @DisplayName("Проверка при ответе 200")
+    @Severity(SeverityLevel.NORMAL)
+    @Owner("Понять и простить")
+    @Epic(value = "TestMock")
     void testOneDay() throws JsonProcessingException {
         logger.info("test 1 is run");
         ObjectMapper mapper = new ObjectMapper();
@@ -38,6 +47,10 @@ public class TestMock extends AccuweatherMockAbstractTest{
     }
 
     @Test
+    @DisplayName("Проверка при ответе 400")
+    @Severity(SeverityLevel.NORMAL)
+    @Owner("Понять и простить")
+    @Epic(value = "TestMock")
     void testTenDays() {
         logger.info("test 2 is run");
 

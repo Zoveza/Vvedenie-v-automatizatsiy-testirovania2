@@ -12,21 +12,24 @@
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <junit.version>5.7.2</junit.version>
-        <logback.version>1.3.5</logback.version>
-        <slf4j.version>2.0.4</slf4j.version>
-        <mockito.version>5.3.1</mockito.version>
-        <wiremock.version>1.58</wiremock.version>
-        <surefire.version>2.22.2</surefire.version>
         <assured.version>5.3.0</assured.version>
         <jackson.version>2.15.0</jackson.version>
+        <surefire.version>2.22.2</surefire.version>
+        <logback.version>1.3.5</logback.version>
+        <slf4j.version>2.0.4</slf4j.version>
+        <wiremock.version>1.58</wiremock.version>
+        <surefire-report.version>2.22.2</surefire-report.version>
+        <aspectj.version>1.8.10</aspectj.version>
+        <allure.junit.version>2.22.1</allure.junit.version>
     </properties>
 
     <!-- Архивирование -->
     <packaging>jar</packaging>
 
-    <name>Домашнаяя работа5</name>
-    <description>Пятая домашнее задание курса введения в автоматизацию</description>
+    <name>Домашнаяя работа6</name>
+    <description>Шестое домашнее задание курса введения в автоматизацию</description>
     <url>http://demo.max.org</url>
 
     <!-- Зависимости -->
@@ -73,13 +76,6 @@
             <artifactId>logback-classic</artifactId>
             <version>${logback.version}</version>
         </dependency>
-        <!-- Лекция 5. Мокирование -->
-        <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-core</artifactId>
-            <version>${mockito.version}</version>
-            <scope>test</scope>
-        </dependency>
         <!-- Лекция 5. WireMock -->
         <dependency>
             <groupId>com.github.tomakehurst</groupId>
@@ -87,7 +83,12 @@
             <version>${wiremock.version}</version>
             <!--          <scope>test</scope>-->
         </dependency>
-
+        <!-- Лекция 6. Allure -->
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-junit5</artifactId>
+            <version>${allure.junit.version}</version>
+        </dependency>
     </dependencies>
 
     <!-- Сборка -->
@@ -107,6 +108,18 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${surefire.version}</version>
+            </plugin>
+            <plugin>
+                <groupId>io.qameta.allure</groupId>
+                <artifactId>allure-maven</artifactId>
+                <version>2.12.0</version>
+                <configuration>
+                    <!-- На момент написания лекции соответствующий архив не доступен,
+                    закомментируйте строку-->
+                    <!--<reportVersion>2.4.1</reportVersion>-->
+                    <!-- Добавим адрес директории для генератора отчета -->
+                    <buildDirectory>C:\Users\zoveza\IdeaProjects\Vvedenie-v-automatizatsiy-testirovania\target\site\allure-maven-plugin</buildDirectory>
+                </configuration>
             </plugin>
         </plugins>
     </build>
